@@ -1,0 +1,90 @@
+상속
+====
+
+의사 클래스 방식
+----------------
+
+.. code-block:: javascript
+
+    > var Mammal = function (name) {
+        this.name = name;
+        this.says = function () {
+            return this.saying || '';
+        }
+    };
+    > var Cat = function (name) {
+        this.name = name;
+        this.saying = 'meow';
+    };
+    > Cat.prototype = new Mammal();
+
+    > var myCat = new Cat('nabi');
+    > myCat.name;
+    'nabi'
+    > myCat.says();
+    'meow';
+
+.. code-block:: javascript
+
+    > Function.prototype.inherits = function (Parent) {
+        this.prototype = new Parent();
+        return this;
+    };
+    > var Cat = function (name) {
+        this.name = name;
+        this.saying = 'meow';
+    }.inherits(Mammal);
+
+프로토타입 방식
+---------------
+
+.. code-block:: javascript
+
+    > var myMammal = {
+        name: 'mammal',
+        says: function () {
+            return this.saying || '';
+        }
+    };
+    > var Cat = function (name) {
+        this.name = name;
+        this.saying = 'meow';
+    };
+    > Cat.prototype = myMammal;
+    > var myCat = new Cat('nabi');
+    > myCat.says();
+    'meow'
+
+.. code-block:: javascript
+
+    > Object.create = function (parent) {
+        var F = function () {};
+        F.prototype = parent;
+        return new F();
+    };
+    > myCat = Object.create(myMammal);
+    > myCat.name = 'nabi';
+    > myCat.saying = 'meow';
+    > myCat.says();
+    'meow'
+
+함수를 사용한 방식
+------------------
+
+.. code-block:: javascript
+
+    > var mammal = function (spec) {
+        var that = {};
+        that.says = function () {
+            return spec.saying || '';
+        };
+        return that;
+    };
+    > var cat = function (spec) {
+        spec.saying = spec.saying || 'meow';
+        var that = mammal(spec);
+        return that;
+    };
+    > var myCat = cat({name: 'nabi'});
+    > myCat.says();
+    'meow'

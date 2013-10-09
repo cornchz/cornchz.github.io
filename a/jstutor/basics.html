@@ -1,0 +1,444 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>문법 &mdash; JavaScript Tutorial v0.1 alpha</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="JavaScript Tutorial v0.1 alpha" href="index.html" />
+    <link rel="next" title="객체" href="object.html" />
+    <link rel="prev" title="개발 준비하기" href="prepare.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="object.html" title="객체"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prepare.html" title="개발 준비하기"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>문법<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>주석<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>자바스크립트에서 주석은 한 줄 주석(<tt class="docutils literal"><span class="pre">//</span></tt>), 여러 줄 주석(<tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt>)의 두 가지를 제공합니다.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c">// 한 줄 주석</span>
+
+<span class="c">/* 여러 줄</span>
+<span class="c">   주석*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>기본 데이터 타입<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">자바스크립트에선 값이 변하지 않는(immutable) 데이터를 <em>기본 데이터 타입</em> 이라 합니다.</div>
+<div class="line">숫자, 문자열, 불리언, <tt class="docutils literal"><span class="pre">null</span></tt>, <tt class="docutils literal"><span class="pre">undefined</span></tt> 가 <em>기본 데이터 타입</em> 에 속합니다.</div>
+<div class="line"><br /></div>
+<div class="line">변수의 선언은 <tt class="docutils literal"><span class="pre">var</span></tt> 로 시작됩니다. 변수를 선언함과 동시에 값을 초기화할 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">someNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">str</span> <span class="o">+=</span> <span class="s1">&#39; world!&#39;</span><span class="o">;</span>
+<span class="nx">hello</span> <span class="nx">world</span><span class="o">!</span>
+</pre></div>
+</div>
+<div class="last line-block">
+<div class="line">문자열의 값이 변한 것처럼 보이지만 사실은 단지 <tt class="docutils literal"><span class="pre">str</span></tt> 에 새 문자열 <tt class="docutils literal"><span class="pre">'hello</span> <span class="pre">world!'</span></tt> 를 바인딩한 것 뿐입니다.</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>숫자<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">자바스크립트에서 수는 모두 기본적으로 실수(floating-point)입니다.</div>
+<div class="line">하지만 다른 언어에서와 같이 정수 타입도 있다고 생각하셔도 큰 문제는 없습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mf">1.0</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="mf">3.14</span>
+<span class="mf">3.14</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">일반적인 수가 아닌 <tt class="docutils literal"><span class="pre">Infinity</span></tt>, <tt class="docutils literal"><span class="pre">NaN</span></tt> (Not a Number)도 있습니다.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">Infinity</span></tt> 는 일반적인 무한의 개념과 같이, 어떤 수를 더고 빼거나 곱해도 무한(<tt class="docutils literal"><span class="pre">Infinity</span></tt>)입니다.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">NaN</span></tt> 은 <em>number</em> 타입이지만 다른 어떤 수, 심지어는 자기 자신과도 같지 않습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="kc">Infinity</span>
+
+<span class="o">&gt;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span>
+<span class="mi">0</span>
+<span class="o">&gt;</span> <span class="o">+</span> <span class="s1">&#39;hello&#39;</span>
+<span class="kc">NaN</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>문자열<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">문자열은 작은 따옴표(&#8216;) 두 개, 혹은 큰 따옴표(&#8221;) 두 개로 표현할 수 있습니다.</div>
+<div class="line">문자열은 객체는 아니지만 <tt class="docutils literal"><span class="pre">length</span></tt>, <tt class="docutils literal"><span class="pre">substr</span></tt> 등의 속성을 가지는 유사 객체입니다.</div>
+<div class="line">또한 문자열은 배열처럼 인덱스를 통해 접근할 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="s1">&#39;single&#39;</span>
+<span class="s1">&#39;single&#39;</span>
+<span class="o">&gt;</span> <span class="s2">&quot;double&quot;</span>
+<span class="s1">&#39;double&#39;</span>
+
+<span class="o">&gt;</span> <span class="s1">&#39;single&#39;</span><span class="p">.</span><span class="nx">length</span>
+<span class="mi">6</span>
+<span class="o">&gt;</span> <span class="s1">&#39;single&#39;</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">&#39;n&#39;</span>
+</pre></div>
+</div>
+<p>생성자 <tt class="docutils literal"><span class="pre">new</span> <span class="pre">String()</span></tt> 을 통해서도 문자열을 생성할 수 있습니다.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">strobj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;mock&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>하지만 <tt class="docutils literal"><span class="pre">new</span> <span class="pre">String()</span></tt> 을 통해 선언한 것은 문자열 <strong>객체</strong> 이므로 문자열 리터럴과는 <strong>서로 같지 않습니다</strong>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">strobj</span>
+<span class="s1">&#39;object&#39;</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="s1">&#39;mock&#39;</span>
+<span class="s1">&#39;string&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>불리언<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">불리언은 참(<tt class="docutils literal"><span class="pre">true</span></tt>)과 거짓(<tt class="docutils literal"><span class="pre">false</span></tt>)의 두 가지 값을 표현합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span>
+<span class="kc">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="null">
+<h3><strong>null</strong><a class="headerlink" href="#null" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">null</span></tt> 은 빈 참조(reference)를 가리킬 때 쓰입니다.</div>
+<div class="line">하지만 정의되어 있다는 점에서 <tt class="docutils literal"><span class="pre">undefined</span></tt> 와는 다르니 구분해야 합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">a</span> <span class="o">===</span> <span class="kc">undefined</span>
+<span class="kc">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="undefined">
+<h3><strong>undefined</strong><a class="headerlink" href="#undefined" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">undefined</span></tt> 는 변수 혹은 멤버가 정의되지 않은 경우 반환됩니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">someobj</span> <span class="c">// undefined</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Cheol&quot;</span><span class="o">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="s2">&quot;unknown&quot;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">height</span> <span class="o">===</span> <span class="kc">undefined</span>
+<span class="kc">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>문장<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">문장은 하나의 실행 단위입니다. 변수의 선언이나 하나의 표현식이 하나의 문장이 될 수 있습니다. 변수를 선언하거나 표현식을 실행할 때는 항상 마지막에 세미콜론(;)을 삽입해야 합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myPhone</span> <span class="o">=</span> <span class="s1">&#39;iPhone&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">또한 자바스크립트는 그 문법을 C에서 빌려 왔기 때문에 <tt class="docutils literal"><span class="pre">if</span></tt>, <tt class="docutils literal"><span class="pre">while</span></tt>, <tt class="docutils literal"><span class="pre">switch</span></tt>, <tt class="docutils literal"><span class="pre">for</span></tt> 문 등을 그대로 가집니다.</div>
+</div>
+<div class="section" id="if">
+<h3>if문<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">if문은 괄호 안의 표현식의 값에 따라 블럭 내의 문장을 실행할 지를 결정합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="k">if</span> <span class="p">(</span><span class="nx">apple</span><span class="p">.</span><span class="nx">price</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">buy</span><span class="p">(</span><span class="nx">apple</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>블럭은 중괄호 &#8216;{&#8216;, &#8216;}&#8217;로 묶인 부분을 의미합니다. 다른 언어들과 달리 자바스크립트는 블록은 새로운 변수 유효범위(scope)를 생성하지 않으므로 변수는 항상 블록 안에서가 아니라 함수의 첫 부분에서 정의해야 합니다.</p>
+<div class="last highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="k">if</span> <span class="p">(</span><span class="nx">apple</span><span class="p">.</span><span class="nx">price</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">buy</span><span class="p">(</span><span class="nx">apple</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">bought</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c">// 블럭 내에서 선언됨</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bought</span><span class="p">);</span>
+<span class="kc">true</span> <span class="c">// 블럭 밖에서도 유효</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="switch">
+<h3>switch문<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">switch문은 주어진 표현식을 모든 case의 표현식과 비교하여 일치하는 표현식을 찾으면 해당 case 절에 있는 문장들을 실행합니다.</div>
+<div class="line">만약 일치하는 표현식을 찾지 못하는 경우에는 default 절의 문장들을 실행합니다. <em>(default는 선택사항)</em></div>
+<div class="line">case 절의 마지막에는 다음 case 절로 넘어가지 않게 <tt class="docutils literal"><span class="pre">break</span></tt> 문을 사용해야 합니다. 그렇지 않은 경우 다음 case의 문장들까지 실행하게 됩니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myFruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">switch</span><span class="p">(</span><span class="nx">myFruit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">case</span> <span class="s1">&#39;apple&#39;</span><span class="o">:</span>
+        <span class="nx">pay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="nx">case</span> <span class="s1">&#39;banana&#39;</span><span class="o">:</span>
+        <span class="nx">pay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="nx">case</span> <span class="s1">&#39;grape&#39;</span><span class="o">:</span>
+        <span class="nx">pay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="nx">default</span><span class="o">:</span>
+        <span class="nx">buy</span><span class="p">(</span><span class="s1">&#39;grape&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">// 첫 번째 case 절에서 break를 하지 않았으므로 pay(100), pay(200)이 실행됩니다.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="while">
+<h3>while문<a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h3>
+<p>while 문은 단순한 반복 수행 문장입니다. 괄호 안의 표현식이 참인 동안은 블록을 반복해서 실행하며, 표현식이 거짓이면 반복 수행은 끝납니다.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="k">while</span> <span class="p">(</span><span class="nx">due</span> <span class="o">-</span> <span class="nx">today</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">drink</span><span class="p">();</span>
+    <span class="nx">today</span><span class="o">++;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for">
+<h3>for문<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">자바스크립트는 두 가지 형태의 for문을 제공합니다. 하나는 C나 초기 자바에서 제공되는 초기화-조건-증가 형태의 for문입니다.</div>
+<div class="line">for문의 괄호는 세 개의 표현식과 그를 나누는 두 개의 세미콜론을 포함합니다.</div>
+</div>
+<ol class="arabic simple">
+<li>for문이 처음 실행되면 첫 번째 표현식인 초기화가 실행됩니다.</li>
+<li>두 번째 표현식은 조건문인데, 그 조건을 만족하는 동안 블럭이 실행됩니다.</li>
+<li>그리고 각 블럭이 실행된 후에 세 번째 표현식을 실행합니다.</li>
+</ol>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;2 * &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nx">i</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">...</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">for문의 다른 한 종류는 보통 <strong>for in</strong> 문이라 불리는 것입니다. 파이썬의 for 문이나 자바 1.5에서 추가된 foreach 문이 이러한 형태를 하고 있습니다.</div>
+<div class="line">이 형태의 for문은 각각의 반복 실행마다 객체에 있는 각각의 속성 이름을 변수에 할당합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">apple</span><span class="o">:</span> <span class="mi">100</span><span class="o">,</span>
+    <span class="nx">banana</span><span class="o">:</span> <span class="mi">200</span><span class="o">,</span>
+    <span class="nx">grape</span><span class="o">:</span> <span class="mi">300</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">fruits</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">fruits</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="nx">apple</span><span class="o">:</span> <span class="mi">100</span>
+<span class="nx">banana</span><span class="o">:</span> <span class="mi">200</span>
+<span class="nx">grape</span><span class="o">:</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="return">
+<h3>return문<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>return문은 함수 내부에서 실행되며, 자신을 호출한 곳으로 되돌아가는 역할을 합니다. 그와 동시에 반환값을 돌려줍니다.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="o">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="o">;</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c">// 함수를 호출한 부분</span>
+<span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>표현식<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">표현식(expression)은 리터럴 값(문자열, 숫자 등), 괄호로 묶인 표현식, 변수, 함수 호출 등 <strong>값</strong> 들과 <strong>연산</strong> (+, -, &amp;&amp; 등) 들의 조합으로, 어떤 하나의 값을 결과로 가지는 식을 말합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">;</span>
+<span class="mi">5</span>
+
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="o">&gt;</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">);</span>
+<span class="p">{</span> <span class="s1">&#39;0&#39;</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="o">,</span>
+  <span class="s1">&#39;1&#39;</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="o">,</span>
+  <span class="s1">&#39;2&#39;</span><span class="o">:</span> <span class="s1">&#39;t&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">자바스크립트에서 사용할 수 있는 연산자는 다음과 같습니다.</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">연산자</th>
+<th class="head">기능</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>. [] ()</td>
+<td>세부지정이나 호출</td>
+</tr>
+<tr><td>delete new typeof + - !</td>
+<td>단항 연산자</td>
+</tr>
+<tr><td>+ - * /</td>
+<td>산술 연산자</td>
+</tr>
+<tr><td>&gt;= &lt;= &lt; &gt;</td>
+<td>비교 연산자</td>
+</tr>
+<tr><td>=== !==</td>
+<td>동등 연산자</td>
+</tr>
+<tr><td>&amp;&amp; ||</td>
+<td>논리 연산자</td>
+</tr>
+<tr><td>?:</td>
+<td>삼항 연산자</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">대부분 연산자는 기대한 대로 작동합니다만, 동등 연산자(<tt class="docutils literal"><span class="pre">===</span></tt>, <tt class="docutils literal"><span class="pre">!==</span></tt>)와 논리 연산자(<tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt>, <tt class="docutils literal"><span class="pre">||</span></tt>)는 다른 언어들과 조금 다르기에 사용하는 데 주의를 요합니다.</div>
+</div>
+<div class="section" id="id9">
+<h3>논리 연산자 &amp;&amp;, ||<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">많은 언어에서 논리 연산자는 좌우 항으로 불리언을 기대하며 결과값으로 불리언을 가집니다. 자바스크립트에서도 대부분의 경우 비슷하게 사용될 수 있습니다만 의미가 조금 다릅니다.</div>
+<div class="line"><br /></div>
+<div class="line">자바스크립트의 <tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt> 연산자는 첫 번째 피연산자가 거짓(<tt class="docutils literal"><span class="pre">false</span></tt>)일 경우 첫 번째 피연산자의 값을 취하고, 그렇지 않은 경우에는 두 번째 피연산자의 값을 결과값으로 취합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="o">&gt;</span> <span class="kc">NaN</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span>
+<span class="kc">NaN</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">반대로 <tt class="docutils literal"><span class="pre">||</span></tt> 연산자는 첫 번째 피연산자가 참(<tt class="docutils literal"><span class="pre">true</span></tt>)이면 이 값을 취하고 그렇지 않으면 두 번째 피연산자를 취합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">||</span> <span class="mi">0</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="kc">NaN</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>동등 연산자 ===, !==<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">많은 언어에서 비교 연산으로 <tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt> 를 사용하는데, 자바스크립트는 특이하게도 주로 <tt class="docutils literal"><span class="pre">===</span></tt>, <tt class="docutils literal"><span class="pre">!==</span></tt> 를 주로 사용합니다.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">===</span></tt>, <tt class="docutils literal"><span class="pre">!==</span></tt> 는 타입과 값 모두를 비교합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="mi">1</span> <span class="o">===</span> <span class="s1">&#39;1&#39;</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span> <span class="o">===</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="kc">false</span>                       <span class="c">// 서로 다른 객체</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">obj1</span> <span class="o">===</span> <span class="nx">obj2</span>
+<span class="kc">true</span>                        <span class="c">// 같은 객체 참조</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">사실은 자바스크립트에도 <tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt> 연산자가 있습니다. 원래는 타입 변환(coersion)을 동반하는 동등 연산으로 사용되기 위해 만들어졌는데, 잘못된 설계로 직관적으로 동작하지 않습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="s1">&#39; &#39;</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="mi">0</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="mi">0</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span>
+<span class="kc">true</span> <span class="c">// -_-;;;;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">따라서 항상 <tt class="docutils literal"><span class="pre">===</span></tt>, <tt class="docutils literal"><span class="pre">!==</span></tt> 을 사용해야 합니다.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="object.html" title="객체"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="prepare.html" title="개발 준비하기"
+             >previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Cheol Kang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

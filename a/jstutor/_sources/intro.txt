@@ -1,0 +1,25 @@
+자바스크립트는?
+===============
+
+
+자바스크립트는
+--------------
+
+| 자바스크립트는 *ECMAScript* 라고도 불리며 [#f1]_ , 웹 브라우저에서 사용하기 위해 1995년에 개발된 언어입니다. 
+| 자바스크립트는 다음과 같은 패러다임(paradigm)을 갖고 있습니다.
+
+* `명령형 (imperative) <http://en.wikipedia.org/wiki/Imperative_programming>`_
+* `함수형 (functional) <http://en.wikipedia.org/wiki/Functional_language>`_
+* `프로토타입 기반 (prototype-based) <http://en.wikipedia.org/wiki/Prototype-based>`_
+* `실행시간 반영 (reflective) <http://en.wikipedia.org/wiki/Reflection_(computer_programming)>`_
+
+
+자바스크립트를 쓰는 이유
+------------------------
+
+| 자바스크립트는 여러 가지 (대단히) 잘못된 설계를 포함하고 있습니다. 그럼에도 자바스크립트를 사용하는 이유는 **선택의 여지가 없기 때문** 입니다. 자바스크립트는 모든 브라우저에서 사용할 수 있는 유일한 언어입니다.
+| 자바스크립트를 사용하는 두 번째 이유는, 자바스크립트가 그럼에도 실제로 꽤 괜찮은 언어이기 때문입니다. 자바스크립트는 매우 동적이며 표현적입니다. 일단 익히고 나면 자바스크립트 코딩이 꽤 재밌다는 걸 알 수 있을 겁니다.
+
+.. rubric:: Footnotes
+
+.. [#f1] 정확히는 ECMAScript의 구현입니다. 예를 들어 대부분의 브라우저에 구현된 JavaScript 1.5는 ECMA-262 3rd edition과 동치이며, JavaScript 1.6은 그 위에 몇 가지 기능이 더 구현된 것입니다.

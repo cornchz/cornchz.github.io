@@ -1,0 +1,187 @@
+함수
+====
+
+| 자바스크립트에선 함수도 `일급 객체 <http://en.wikipedia.org/wiki/First-class_function>`_ 입니다.
+| 따라서 변수에 할당되거나 함수의 인자나 반환값으로 사용될 수 있습니다.
+
+.. seealso::
+    `일급 객체 <http://en.wikipedia.org/wiki/First-class_function>`_
+
+함수 리터럴
+-----------
+
+| 함수는 ``function`` 문과 함수 리터럴의 두 가지 방법으로 선언할 수 있습니다.
+| 둘의 문법상 차이는 ``function`` 문은 선언할 때 *function* 과 인자 목록 ``( arg, ... )`` 사이에 함수 이름이 온다는 것이고, 함수 리터럴은 뒤에 함수 이름이 오지 않는다는 겁니다.
+
+.. code-block:: javascript
+
+    // function문
+    > function add1(a, b) {
+        return a + b;
+    }
+
+    // 함수 리터럴
+    > var add2 = function (a, b) {
+        return a + b;
+    };
+
+    > add1(1, 2)
+    3
+    > add2(1, 2)
+    3
+
+| 위에서 ``add1()`` 은 ``function`` 문으로 선언된 함수이며, ``add2()`` 는 함수 리터럴로 선언된 함수입니다.
+| 사용상의 차이는 거의 없습니다. 단, ``function`` 문으로 선언한 경우 에러가 발생했을 때 trace에서 함수 이름이 제대로 표기되는 반면, 함수 리터럴은 익명 함수(anonymous function)이기 때문에 함수 이름이 제대로 표시되지 않습니다.
+
+.. code-block:: javascript
+
+    > function err1() {
+        undef(); // 정의되지 않은 함수 호출
+    };
+    > err1();
+    ReferenceError: undef is not defined
+        at err1 ([object Context]:2:1])
+        // 생략
+
+    > var err2 = function () {
+        undef();
+    };
+    > err2();
+    ReferenceError: undef is not defined
+        at [object Context]:2:1
+        // 생략
+
+.. seealso::
+
+    `익명 함수 <http://en.wikipedia.org/wiki/Anonymous_function>`_
+
+| 반대로 함수 리터럴은 그 함수가 어떤 변수에 바인딩되어 있다는 것이 명확하게 드러나기 때문에 *함수 객체* 로서 사용될 때 좀 더 의미를 직관적으로 이해할 수 있다는 점에서 장점이 있습니다.
+| 따라서 어느 한 쪽이 항상 좋다고 할 수는 없고, 그때그때 적절한 걸 사용하시면 됩니다.
+
+호출
+----
+
+메소드 호출 패턴
+^^^^^^^^^^^^^^^^
+
+객체에 바인딩
+
+함수 호출 패턴
+^^^^^^^^^^^^^^
+
+전역 객체에 바인딩
+
+생성자 호출 패턴
+^^^^^^^^^^^^^^^^
+
+새 인스턴스에 바인딩
+
+apply 호출 패턴
+^^^^^^^^^^^^^^^
+
+인자에 바인딩
+
+
+인수 배열
+---------
+
+
+반환
+----
+
+
+예외
+----
+
+
+재귀호출
+--------
+
+.. code-block:: javascript
+
+    > function factorial(n) {
+        if (n == 1) { return 1; }
+        return n * factorial(n - 1); // no tail recursion
+    }
+    > factorial(4);
+    24
+
+
+유효범위
+--------
+
+.. code-block:: javascript
+
+    > var scope = "global";
+    > function f() {
+        console.log(scope);
+        var scope = "local";
+        console.log(scope);
+    }();
+    undefined // not "global"
+    local
+
+.. code-block:: javascript
+
+    > var scope = "global";
+    > function f() {
+        var scope;
+        console.log(scope);
+        scope = "local";
+        console.log(scope);
+    }();
+
+클로저
+------
+
+.. code-block:: javascript
+
+    > var counter = function () {
+        var value = 0;
+        return {
+            get: function () {
+                return ++value;
+            }
+        };
+    }();
+    > counter.get();
+    1
+    > counter.get();
+    2
+
+콜백
+----
+
+.. code-block:: javascript
+
+    > function helloWorld() {
+        console.log('hello world!');
+    }
+    > setTimeout(helloWorld, 1000);
+    hello world! // 1초 뒤 출력
+
+모듈
+----
+
+.. code-block:: javascript
+
+    > var counter = function () {
+        var value = 0;
+        return function () {
+            return ++value;
+        };
+    }();
+    > counter();
+    1
+    > counter();
+    2
+
+
+커링
+----
+
+
+메모이제이션
+------------
+
+

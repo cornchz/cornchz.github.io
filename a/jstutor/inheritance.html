@@ -1,0 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>상속 &mdash; JavaScript Tutorial v0.1 alpha</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="JavaScript Tutorial v0.1 alpha" href="index.html" />
+    <link rel="prev" title="함수" href="function.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="function.html" title="함수"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>상속<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>의사 클래스 방식<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Mammal</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">says</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">saying</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">saying</span> <span class="o">=</span> <span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mammal</span><span class="p">();</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="s1">&#39;nabi&#39;</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">name</span><span class="o">;</span>
+<span class="s1">&#39;nabi&#39;</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">says</span><span class="p">();</span>
+<span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">inherits</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Parent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Parent</span><span class="p">();</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">saying</span> <span class="o">=</span> <span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+<span class="p">}.</span><span class="nx">inherits</span><span class="p">(</span><span class="nx">Mammal</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>프로토타입 방식<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myMammal</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;mammal&#39;</span><span class="o">,</span>
+    <span class="nx">says</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">saying</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">saying</span> <span class="o">=</span> <span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">myMammal</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="s1">&#39;nabi&#39;</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">says</span><span class="p">();</span>
+<span class="s1">&#39;meow&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">F</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+    <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">parent</span><span class="o">;</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">myMammal</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;nabi&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">saying</span> <span class="o">=</span> <span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">says</span><span class="p">();</span>
+<span class="s1">&#39;meow&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>함수를 사용한 방식<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">mammal</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">that</span><span class="p">.</span><span class="nx">says</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">spec</span><span class="p">.</span><span class="nx">saying</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">that</span><span class="o">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">spec</span><span class="p">.</span><span class="nx">saying</span> <span class="o">=</span> <span class="nx">spec</span><span class="p">.</span><span class="nx">saying</span> <span class="o">||</span> <span class="s1">&#39;meow&#39;</span><span class="o">;</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="nx">mammal</span><span class="p">(</span><span class="nx">spec</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">that</span><span class="o">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">myCat</span> <span class="o">=</span> <span class="nx">cat</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;nabi&#39;</span><span class="p">});</span>
+<span class="o">&gt;</span> <span class="nx">myCat</span><span class="p">.</span><span class="nx">says</span><span class="p">();</span>
+<span class="s1">&#39;meow&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="function.html" title="함수"
+             >previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Cheol Kang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

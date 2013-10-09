@@ -1,0 +1,126 @@
+객체
+====
+| 자바스크립트에서 기본 데이터 타입을 제외한 나머지는 모두 객체입니다.
+| 자바스크립트의 객체는 이름과 값의 쌍인 속성(property)들을 포함하는 컨테이너입니다. 자바스크립트의 객체는 클래스를 필요로 하지 않기 때문에 C++, 자바의 객체보다는 오히려 `연관 배열(associative array) <http://en.wikipedia.org/wiki/Associative_array>`_ 과 유사하다고도 할 수 있습니다.
+
+.. seealso::
+    `연관 배열 <http://en.wikipedia.org/wiki/Associative_array>`_ 
+    : C++의 맵(map), 파이썬의 딕셔너리(dictionary)가 이에 해당합니다.
+
+객체 리터럴
+-----------
+
+| 객체는 객체 리터럴(``{ key: value, ... }``)로 선언할 수 있습니다.
+| 속성 이름은 문자열만 가능하며 따옴표로 묶어도 되고 묶지 않아도 됩니다.
+| 속성값으로는 객체, 함수 포함 모든 데이터를 넣을 수 있습니다.
+
+.. code-block:: javascript
+
+    > var cheol = {
+        name: "Cheol Kang",
+        "height": 180,
+        handle: {
+            SPARCS: "cancho",
+            twitter: "cornchz"
+        },
+        age: function () {
+            return currentYear - 1990 + 1;
+        }
+    };
+
+속성값 읽기
+-----------
+
+| 객체의 속성값은 대괄호(``[]``) 또는 마침표(``.``)를 이용해 읽을 수 있습니다.
+
+.. code-block:: javascript
+
+    > cheol['name'];
+    'Cheol Kang'
+    > cheol.height;
+    180
+
+.. note::
+
+    | 대괄호로 참조하는 것과 마침표로 참조하는 것은 정확히는 같지 않습니다.
+    | 마침표로 참조하는 경우, 마침표에 뒤따르는 문자열을 속성 이름으로 생각하기 때문에 속성 이름이 런타임(runtime)에 결정되는 경우 사용할 수 없습니다.
+
+    .. code-block:: javascript
+
+        > var props = ['name', 'height'];
+        > for (var i in props) {
+            var prop = props[i];
+            console.log(cheol[prop]); // cheol.prop은 전혀 다른 의미입니다.
+        }
+        Cheol Kang
+        180
+
+| 객체에 존재하지 않는 속성을 읽으려고 하면 ``undefined`` 를 반환합니다.
+
+.. code-block:: javascript
+
+    > cheol.girlFriend; // undefined
+    > cheol['car'];     // undefined
+
+| ``||`` 연산자를 사용하여 기본값을 지정할 수 있습니다.
+
+.. code-block:: javascript
+
+    > cheol.car || '(none)';
+    '(none)'
+
+| 존재하지 않는 속성을 참조하려 하면 ``TypeError`` 예외가 발생합니다. 이런 상황을 방지하기 위해 ``&&`` 연산자를 사용할 수 있습니다.
+
+.. code-block:: javascript
+
+    > cheol.girlFriend // undefined
+    > cheol.girlFriend.car
+    TypeError: Cannot read property 'car' of undefined
+        at [object Context]:1:2
+        // (생략)
+    > cheol.girlFriend && cheol.girlFriend.car // undefined
+
+속성값 갱신
+-----------
+
+| 객체의 값은 할당을 통해 갱신합니다. 속성 이름이 이미 존재했다면 값을 덮어쓰고, 존재하지 않았다면 해당 속성을 객체에 추가합니다.
+
+.. code-block:: javascript
+
+    > cheol.name = 'Cheol';
+    > cheol['job'] = 'student';
+
+속성 삭제
+---------
+
+| ``delete`` 연산자를 사용하면 객체의 속성을 삭제할 수 있습니다.
+
+.. code-block:: javascript
+
+    > cheol.name;
+    'Cheol'
+    > delete cheol.name;
+    > cheol.name; // undefined
+
+참조
+----
+
+| 객체는 참조(reference) 방식으로 전달되며 결코 복사되지 않습니다.
+
+.. code-block:: javascript
+
+    > var obj = new Object();
+    > var objRef = obj;
+    > obj.one = 1;
+    > obj.one === objRef.one
+    true
+    > obj === objRef
+    true
+
+    > objRef = new Object();
+    > objRef.one = 'one';
+    > obj.one === objRef.one
+    false
+    > obj === objRef
+    false
+

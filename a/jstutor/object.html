@@ -1,0 +1,205 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>객체 &mdash; JavaScript Tutorial v0.1 alpha</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="JavaScript Tutorial v0.1 alpha" href="index.html" />
+    <link rel="next" title="배열" href="array.html" />
+    <link rel="prev" title="문법" href="basics.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="array.html" title="배열"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="basics.html" title="문법"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>객체<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">자바스크립트에서 기본 데이터 타입을 제외한 나머지는 모두 객체입니다.</div>
+<div class="line">자바스크립트의 객체는 이름과 값의 쌍인 속성(property)들을 포함하는 컨테이너입니다. 자바스크립트의 객체는 클래스를 필요로 하지 않기 때문에 C++, 자바의 객체보다는 오히려 <a class="reference external" href="http://en.wikipedia.org/wiki/Associative_array">연관 배열(associative array)</a> 과 유사하다고도 할 수 있습니다.</div>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://en.wikipedia.org/wiki/Associative_array">연관 배열</a>
+: C++의 맵(map), 파이썬의 딕셔너리(dictionary)가 이에 해당합니다.</p>
+</div>
+<div class="section" id="id3">
+<h2>객체 리터럴<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">객체는 객체 리터럴(<tt class="docutils literal"><span class="pre">{</span> <span class="pre">key:</span> <span class="pre">value,</span> <span class="pre">...</span> <span class="pre">}</span></tt>)로 선언할 수 있습니다.</div>
+<div class="line">속성 이름은 문자열만 가능하며 따옴표로 묶어도 되고 묶지 않아도 됩니다.</div>
+<div class="line">속성값으로는 객체, 함수 포함 모든 데이터를 넣을 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">cheol</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Cheol Kang&quot;</span><span class="o">,</span>
+    <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">180</span><span class="o">,</span>
+    <span class="nx">handle</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">SPARCS</span><span class="o">:</span> <span class="s2">&quot;cancho&quot;</span><span class="o">,</span>
+        <span class="nx">twitter</span><span class="o">:</span> <span class="s2">&quot;cornchz&quot;</span>
+    <span class="p">}</span><span class="o">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">currentYear</span> <span class="o">-</span> <span class="mi">1990</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>속성값 읽기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">객체의 속성값은 대괄호(<tt class="docutils literal"><span class="pre">[]</span></tt>) 또는 마침표(<tt class="docutils literal"><span class="pre">.</span></tt>)를 이용해 읽을 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+<span class="s1">&#39;Cheol Kang&#39;</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">height</span><span class="o">;</span>
+<span class="mi">180</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="line-block">
+<div class="line">대괄호로 참조하는 것과 마침표로 참조하는 것은 정확히는 같지 않습니다.</div>
+<div class="line">마침표로 참조하는 경우, 마침표에 뒤따르는 문자열을 속성 이름으로 생각하기 때문에 속성 이름이 런타임(runtime)에 결정되는 경우 사용할 수 없습니다.</div>
+</div>
+<div class="last highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">props</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="o">,</span> <span class="s1">&#39;height&#39;</span><span class="p">];</span>
+<span class="o">&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">prop</span> <span class="o">=</span> <span class="nx">props</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cheol</span><span class="p">[</span><span class="nx">prop</span><span class="p">]);</span> <span class="c">// cheol.prop은 전혀 다른 의미입니다.</span>
+<span class="p">}</span>
+<span class="nx">Cheol</span> <span class="nx">Kang</span>
+<span class="mi">180</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">객체에 존재하지 않는 속성을 읽으려고 하면 <tt class="docutils literal"><span class="pre">undefined</span></tt> 를 반환합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">girlFriend</span><span class="o">;</span> <span class="c">// undefined</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">];</span>     <span class="c">// undefined</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">||</span></tt> 연산자를 사용하여 기본값을 지정할 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">car</span> <span class="o">||</span> <span class="s1">&#39;(none)&#39;</span><span class="o">;</span>
+<span class="s1">&#39;(none)&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">존재하지 않는 속성을 참조하려 하면 <tt class="docutils literal"><span class="pre">TypeError</span></tt> 예외가 발생합니다. 이런 상황을 방지하기 위해 <tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt> 연산자를 사용할 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">girlFriend</span> <span class="c">// undefined</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">girlFriend</span><span class="p">.</span><span class="nx">car</span>
+<span class="nx">TypeError</span><span class="o">:</span> <span class="nx">Cannot</span> <span class="nx">read</span> <span class="nx">property</span> <span class="s1">&#39;car&#39;</span> <span class="nx">of</span> <span class="kc">undefined</span>
+    <span class="nx">at</span> <span class="p">[</span><span class="nx">object</span> <span class="nx">Context</span><span class="p">]</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span>
+    <span class="c">// (생략)</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">girlFriend</span> <span class="o">&amp;&amp;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">girlFriend</span><span class="p">.</span><span class="nx">car</span> <span class="c">// undefined</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>속성값 갱신<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">객체의 값은 할당을 통해 갱신합니다. 속성 이름이 이미 존재했다면 값을 덮어쓰고, 존재하지 않았다면 해당 속성을 객체에 추가합니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Cheol&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>속성 삭제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">delete</span></tt> 연산자를 사용하면 객체의 속성을 삭제할 수 있습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">name</span><span class="o">;</span>
+<span class="s1">&#39;Cheol&#39;</span>
+<span class="o">&gt;</span> <span class="nx">delete</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">name</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">cheol</span><span class="p">.</span><span class="nx">name</span><span class="o">;</span> <span class="c">// undefined</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>참조<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">객체는 참조(reference) 방식으로 전달되며 결코 복사되지 않습니다.</div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">objRef</span> <span class="o">=</span> <span class="nx">obj</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span> <span class="o">===</span> <span class="nx">objRef</span><span class="p">.</span><span class="nx">one</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">obj</span> <span class="o">===</span> <span class="nx">objRef</span>
+<span class="kc">true</span>
+
+<span class="o">&gt;</span> <span class="nx">objRef</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="nx">objRef</span><span class="p">.</span><span class="nx">one</span> <span class="o">=</span> <span class="s1">&#39;one&#39;</span><span class="o">;</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span> <span class="o">===</span> <span class="nx">objRef</span><span class="p">.</span><span class="nx">one</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nx">obj</span> <span class="o">===</span> <span class="nx">objRef</span>
+<span class="kc">false</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="array.html" title="배열"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="basics.html" title="문법"
+             >previous</a> |</li>
+        <li><a href="index.html">JavaScript Tutorial v0.1 alpha</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Cheol Kang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
