@@ -68,3 +68,7 @@ p, pre  {
 .right {
   text-align: right;
 }
+
+.hide {
+    display: none;
+}
