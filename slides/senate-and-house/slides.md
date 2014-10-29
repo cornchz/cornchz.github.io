@@ -62,34 +62,41 @@ The major power is to pass federal legislation that affects the entire country.
         <th></th>
         <th><img src="senate-logo.png" style="width: 80px;"><br>Senate</th>
         <th><img src="house-logo.png" style="width: 80px;"><br>House</th>
+        <th><img src="na-logo.jpg" style="width: 80px;"><br>Korean NA</th>
     </tr>
     <tr>
         <th>term</th>
-        <td><center>6 years<br><small>(staggered)</small></center></td>
-        <td><center>2 years</center></td>
+        <td style="width: 30%;"><center>6 years<br><small>(staggered)</small></center></td>
+        <td style="width: 30%;"><center>2 years</center></td>
+        <td style="width: 30%;"><center>4 years</center></td>
     </tr>
     <tr>
         <th>seats</th>
         <td><center>100</center></td>
         <td><center>435</center></td>
+        <td><center>300</center></td>
     </tr>
     <tr>
         <th>seats per state</th>
         <td><center>2</center></td>
         <td><center>1 ~ 53(CA)</center></td>
+        <td><center>1 ~ 51(경기)</center></td>
     </tr>
     <tr>
         <th>exclusive power</th>
-        <td><ul>
+        <td><ul style="margin-top: 0;">
             <li>treaty
-            <li>confirming appointments of Cabinet secretaries
+            <li>confirming Cabinet secretaries
         </ul></td>
-        <td><ul>
+        <td><ul style="margin-top: 0;">
             <li>taxation
-            <li>revenue/appropriation bills
+            <li>revenue / appropriation bills
         </ul></td>
+        <td><center>N/A</center></td>
     </tr>
 </table>
+
+.pull-right.font-80[※ Korean NA is <i>unicameral</i> since 1963]
 
 ---
 
