@@ -16,8 +16,10 @@ a:hover {
 
 #container {
   margin: 25px auto 15px auto;
-  width: 730px;
+  width: 100%;
+  max-width: 730px;
   padding: 5px 20px 20px 20px;
+  box-sizing: border-box;
 }
 
 #logo {
@@ -66,8 +68,8 @@ p, pre  {
 }
 
 ul {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .right {
@@ -75,5 +77,5 @@ ul {
 }
 
 .hide {
-    display: none;
+  display: none;
 }
